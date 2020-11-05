@@ -11,7 +11,7 @@ class farmaco extends Model {
         sequelize,
         modelName: 'farmaco'
       });
-      farmaco.belongsTo(pedido);
+      
     }
 }
 

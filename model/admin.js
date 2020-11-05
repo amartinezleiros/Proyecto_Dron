@@ -12,7 +12,7 @@ class admin extends usuario {
         alta_cliente();,
         ver_pedido();
       });
-      admin.belongsTo(usuario);
+      
 }
 }
 

@@ -14,7 +14,7 @@ class usuario extends Model {
             sequelize,
             modelName: 'usuario'
           });
-
+          
     }
   }
   module.exports = usuario;

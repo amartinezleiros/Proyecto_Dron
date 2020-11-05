@@ -11,7 +11,7 @@ class gestor extends usuario {
         modelName: 'gestor',
         gestionar_pedido();
       });
-      gestor.belongsTo(usuario);
+      
 }
 }
 

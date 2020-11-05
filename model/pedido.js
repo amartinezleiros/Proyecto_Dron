@@ -12,7 +12,7 @@ class pedido extends Model {
         sequelize,
         modelName: 'pedido'
       });
-      pedido.belongsTo(usuario);
+     
 }
 }
 

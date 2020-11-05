@@ -13,7 +13,7 @@ class cliente extends usuario {
         modificar_perfil();,
         hacer_pedido();
       });
-      cliente.belongsTo(usuario);
+      
 }
 }
 
