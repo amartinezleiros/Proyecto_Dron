@@ -19,14 +19,20 @@ connection.authenticate().then(() => {
     Usuario.init(connection); 
     
 
-    Admin.belongsTo(usuario);
-    Cliente.belongsTo(usuario);
-    Farmaco.belongsTo(pedido);
-    Gestor.belongsTo(usuario);
-    Usuario.hasMany(pedido);
-    Pedido.belongsTo(usuario);
+    Admin.belongsTo(Usuario);
+    Cliente.belongsTo(Usuario);
+    Farmaco.belongsTo(Pedido);
+    Gestor.belongsTo(Usuario);
+    Usuario.hasMany(Pedido);
+    Pedido.belongsTo(Usuario);
 
-    model.sync(); }) .catch(err => {   
+    connection.sync();
+    
+
+
+
+
+    }) .catch(err => {   
     
     console.log(err);
 });

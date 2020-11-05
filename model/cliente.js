@@ -1,11 +1,11 @@
-const { Sequelize, DataTypes, usuario } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require('sequelize');
 const Usuario = require('./Usuario')
 
 class Cliente extends Usuario {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
-    usuario.init({
+    Model.init({
         Ubicacion: {type: DataTypes.STRING, allowNull: false}
       }, {
         sequelize,

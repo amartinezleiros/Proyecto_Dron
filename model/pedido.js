@@ -7,7 +7,7 @@ class Pedido extends Model {
     Model.init({
         Fecha: {type: DataTypes.DATE, allowNull: false},
         Id: {type: DataTypes.INTEGER},
-        Estado: {type: DataTypes.ENUM}
+        Estado: {type: DataTypes.ENUM ("Enviado", "No enviado")}
       }, {
         sequelize,
         modelName: 'Pedido'
