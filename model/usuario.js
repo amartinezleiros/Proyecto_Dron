@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
-class usuario extends Model {
+class Usuario extends Model {
   // definiciones de atributos y métodos
 
     static init(sequelize) {
@@ -12,12 +12,12 @@ class usuario extends Model {
             rol: {type: DataTypes.ENUM("cliente", "administrador", "gestor")}
           }, {
             sequelize,
-            modelName: 'usuario'
+            modelName: 'Usuario'
           });
           
     }
   }
-  module.exports = usuario;
+  module.exports = Usuario;
 
 
 

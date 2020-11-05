@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, usuario } = require('sequelize');
+const Usuario = require('./Usuario')
 
-class admin extends usuario {
+class Admin extends Usuario {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
@@ -8,12 +9,15 @@ class admin extends usuario {
 
       }, {
         sequelize,
-        modelName: 'admin',
-        alta_cliente();,
-        ver_pedido();
+        modelName: 'Admin',
+        
       });
       
 }
+
+alta_cliente(){}
+ver_pedido(){}
+
 }
 
-module.exports = admin;
+module.exports = Admin;

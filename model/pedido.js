@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
-class pedido extends Model {
+class Pedido extends Model {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
@@ -10,12 +10,12 @@ class pedido extends Model {
         Estado: {type: DataTypes.ENUM}
       }, {
         sequelize,
-        modelName: 'pedido'
+        modelName: 'Pedido'
       });
      
 }
 }
 
-module.exports = pedido;
+module.exports = Pedido;
 
 

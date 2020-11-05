@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
-class farmaco extends Model {
+class Farmaco extends Model {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
@@ -9,10 +9,10 @@ class farmaco extends Model {
         peso: {type: DataTypes.FLOAT}
       }, {
         sequelize,
-        modelName: 'farmaco'
+        modelName: 'Farmaco'
       });
       
     }
 }
 
-module.exports = farmaco;
+module.exports = Farmaco;

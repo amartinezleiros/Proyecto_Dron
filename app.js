@@ -38,11 +38,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+require ('./conexion_db');
+
 module.exports = app;
 
-admin.belongsTo(usuario);
-cliente.belongsTo(usuario);
-farmaco.belongsTo(pedido);
-gestor.belongsTo(usuario);
-usuario.hasMany(pedido);
-pedido.belongsTo(usuario);
+
