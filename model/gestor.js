@@ -1,11 +1,11 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const Usuario = require('./Usuario')
 
-class Gestor extends Usuario {
+class Gestor extends Model {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
-    Model.init({
+    super.init({
 
       }, {
         sequelize,
@@ -15,7 +15,9 @@ class Gestor extends Usuario {
       
 }
 
-gestionar_pedido(){}
+gestionar_pedido(
+  
+){}
 
 }
 

@@ -4,9 +4,9 @@ class Pedido extends Model {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
-    Model.init({
+    super.init({
         Fecha: {type: DataTypes.DATE, allowNull: false},
-        Id: {type: DataTypes.INTEGER},
+    
         Estado: {type: DataTypes.ENUM ("Enviado", "No enviado")}
       }, {
         sequelize,

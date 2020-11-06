@@ -11,30 +11,22 @@ const connection = new Sequelize('mariadb://root:maria123@localhost:3306/FARMADR
 
 connection.authenticate().then(() => { 
     
-    Admin.init(connection); 
-    Cliente.init(connection); 
+ 
     Farmaco.init(connection); 
-    Gestor.init(connection); 
-    Pedido.init(connection); 
+    Pedido.init(connection);  
     Usuario.init(connection); 
-    
 
-    Admin.belongsTo(Usuario);
-    Cliente.belongsTo(Usuario);
-    Farmaco.belongsTo(Pedido);
-    Gestor.belongsTo(Usuario);
     Usuario.hasMany(Pedido);
     Pedido.belongsTo(Usuario);
+    Farmaco.belongsToMany(Pedido, { through: 'Asignacion' });
 
     connection.sync();
-    
-
-
-
 
     }) .catch(err => {   
     
     console.log(err);
 });
+
+
 
     
