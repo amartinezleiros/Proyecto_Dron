@@ -15,9 +15,7 @@ class Gestor extends Model {
       
 }
 
-gestionar_pedido(
-  
-){}
+gestionar_pedido(){}
 
 }
 
