@@ -10,12 +10,13 @@ class Usuario extends Model {
             apellidos: {type: DataTypes.STRING},
             email: {type: DataTypes.STRING, unique: true, allowNull: false}, 
             password: {type: DataTypes.STRING},
-            Ubicacion: {type: DataTypes.STRING, allowNull: true},
+            ubicacion: {type: DataTypes.STRING, allowNull: true},
             rol: {type: DataTypes.ENUM("cliente", "administrador", "gestor")}
           }, {
             sequelize,
             modelName: 'Usuario'
           });
+          
           
     }
   }
