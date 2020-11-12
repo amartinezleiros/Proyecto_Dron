@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{{title}}</title>
+</head>
+<body>
+    <form action="/pedidos/nuevo" method="post">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" name="cantidad">
+
+        <label for="farmaco">Selecciona el fármaco</label>
+        <select name="farmaco">
+             {{#each farmaco}}
+                <option value="{{nombre}}">{{nombre}}</option>
+             {{/each}}
+        </select>
+
+        <input type="submit" value="Hacer pedido">
+    </form>
+</body>
+</html>
