@@ -1,9 +1,30 @@
 var express = require('express');
+var Usuario = require('../model/usuario');
+
+
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render("login");
 });
+
+router.post('/', async function (req, res) {
+    let {email, password} = req.body;
+    let usuario = await Usuario.findOne({
+        attributes: ['id', 'email', 'nombre'],
+        where: {
+            email,
+            password
+        }
+    });
+    if (usuario) {
+        req.session.usuario = usuario;
+        res.redirect("/");
+    } else {
+        res.render("login", {error: "Email o contraseña incorrectos"});
+    }
+})
+
+
 
 module.exports = router;

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de usuarios</title>
+</head>
+<body>
+    <h1>Detalle de usuario</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Apellidos</td>
+                <td>Email</td>
+                <td>Ubicacion</td>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each usuarios}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{nombre}}</td>
+                <td>{{apellidos}}</td>
+                <td>{{email}}</td>
+                <td>{{ubicacion}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
