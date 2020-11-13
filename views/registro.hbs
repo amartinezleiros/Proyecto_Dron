@@ -28,7 +28,7 @@
 				<h3 class="pepe">Registro</h3>
 			</div>
 			<div class="card-body">
-				<form action="/" method="post">
+				<form action="/registro" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -81,6 +81,11 @@
 				</form>
 			</div>
 			<div class="card-footer">
+				{{#if error}}
+				<div class="alert alert-danger" role="alert">
+					{{error}}
+				</div>
+				{{/if}}
 				
 			</div>
 		</div>
