@@ -1,10 +1,10 @@
 const {Sequelize, Model} = require('sequelize'); 
-const Admin = require('./model/Admin');
-const Cliente = require('./model/Cliente');
-const Farmaco = require('./model/Farmaco');
-const Gestor = require('./model/Gestor');
-const Pedido = require('./model/Pedido');
-const Usuario = require('./model/Usuario');
+const Admin = require('./model/admin');
+const Cliente = require('./model/cliente');
+const Farmaco = require('./model/farmaco');
+const Gestor = require('./model/gestor');
+const Pedido = require('./model/pedido');
+const Usuario = require('./model/usuario');
  
 
 const connection = new Sequelize('mariadb://root:maria123@localhost:3306/FARMADRON');
