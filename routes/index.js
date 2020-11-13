@@ -8,6 +8,14 @@ router.get('/', function(req, res, next) {
   res.render("login");
 });
 
+router.get('/pedido-form', function(req, res, next) {
+    res.render("pedido-form");
+  });
+
+  router.get('/pedido-lista', function(req, res, next) {
+    res.render("pedido-lista");
+  });
+  
 router.post('/', async function (req, res) {
     let {email, password} = req.body;
     let usuario = await Usuario.findOne({
