@@ -7,32 +7,31 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
   let usuarios = await Usuario.findAll();
-  res.render("listado-usuarios", {usuarios});
+  res.render("userlist", {usuarios});
 });
 
-router.get('/nuevo', function (req, res) {
-  res.render("alta-usuario");
+router.get('/registro', function (req, res) {
+  res.render("registro");
 })
 
-router.post('/nuevo', async function (req, res) {
+router.post('/registro', async function (req, res) {
     // Obtención de los datos del formulario
-    let {nombre, apellidos, email, password, repassword, ubicacion, rol} = req.body;
+    let {nombre, apellidos, ubicacion, email, password, repassword} = req.body;
 
     if (password == repassword) {
-      let usuario = new Usuario({nombre, apellidos, email, password, ubicacion, rol});
+      let usuario = new Usuario({nombre, apellidos, ubicacion, email, password, repassword});
       await usuario.save();
-      res.redirect("/usuarios");
+      res.redirect("registro");
     } else {
-      //TODO: mostrar error
-    }
+       }
 })
 
 
-router.get('/:id', function (req, res) {
+router.get('/usuario/:id', function (req, res) {
   res.render("detalle-usuario");  
 })
 
-router.post('/:id', function (req, res) {
+router.post('/usuario/:id', function (req, res) {
   
 })
 
