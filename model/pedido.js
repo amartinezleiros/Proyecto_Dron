@@ -5,8 +5,8 @@ class Pedido extends Model {
 
   static init(sequelize) {
     super.init({
-        Fecha: {type: DataTypes.DATE, allowNull: false},
-        Estado: {type: DataTypes.ENUM ("Enviado", "No enviado")}
+        Fecha: {type: DataTypes.DATE, allowNull: true},
+        Estado: {type: DataTypes.ENUM ("Enviado", "No enviado", "Borrador")}
       }, {
         sequelize,
         modelName: 'Pedido'
