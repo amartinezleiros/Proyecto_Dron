@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(cookieSession({
   name: 'sesion', //nombre de la cookie
   keys: ["aaaaaaaaaa", "bbbbbbbbb"],  //claves para firmar la cookie
-  maxAge: 5 * 60 * 1000 //caducidad en milisegundos
+  maxAge: 50 * 60 * 1000 //caducidad en milisegundos
 }))
 
 app.use(express.static(path.join(__dirname, 'public')));

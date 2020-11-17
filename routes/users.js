@@ -35,6 +35,7 @@ router.post('/:id/nuevo-pedido', async function(req, res) {
 router.get("/:id/pedidos/:pedidoid", async function(req, res) {
   let id = req.params.id;
   let pedidoid = req.params.pedidoid;
+  let usuario = req.session.usuario;
   try { 
     console.log({pedidoid});
     let pedido = await Pedido.findByPk(pedidoid, {
@@ -44,7 +45,7 @@ router.get("/:id/pedidos/:pedidoid", async function(req, res) {
     });
     console.log(pedido);
     let farmaco = await Farmaco.findAll();
-    res.render("pedido-form", {pedido, farmaco});  
+    res.render("pedido-form", {pedido, farmaco, usuario});  
   } catch(err) {
     res.render("error", {message:err.message});
   }
@@ -52,6 +53,7 @@ router.get("/:id/pedidos/:pedidoid", async function(req, res) {
 
 router.post("/:id/pedidos/:pedidoid", async function(req, res) {
   let id = req.params.id;
+  let usuarioid = req.session.usuario.id;
   let PedidoId = parseInt (req.params.pedidoid);
   let FarmacoId = parseInt (req.body.farmaco);
   let cantidad = parseInt (req.body.cantidad);
@@ -66,11 +68,18 @@ router.post("/:id/pedidos/:pedidoid", async function(req, res) {
     });
     console.log(pedido);
     let farmaco = await Farmaco.findAll();
-    res.render("pedido-form", {pedido, farmaco});  
+    res.redirect("/users/" + usuarioid + "/pedidos/" + PedidoId) 
   } catch(err) {
     res.render("error", {message:err.message});
   }
 })
+
+router.post("/:usuarioid/nuevo-pedido/:pedidoid/checkout",  function (req, res) {
+  let usuarioid = req.params.usuarioid;
+  let pedidoid = req.params.pedidoid;
+  res.render ("checkout", {usuarioid, pedidoid});
+})
+
 
 
 

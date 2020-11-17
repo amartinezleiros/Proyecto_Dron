@@ -1,5 +1,6 @@
 var express = require('express');
 var Usuario = require('../model/usuario');
+const { restart } = require('nodemon');
 var router = express.Router();
 
 var router = express.Router();
@@ -54,4 +55,8 @@ router.get('/passwordlost', function (req, res, next) {
   });
 
 
+
 module.exports = router;
+
+
+
