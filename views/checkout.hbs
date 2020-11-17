@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documento</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" href="/stylesheets/style.css">
 <style>
 
-    @import url('https://fonts.googleapis.com/css?family=Arimo');
-$coral: #eb9478;
-$maroon: #8e2807;
-$title: #493b76;
+#log {background-color: #0CC5AA; color: white; margin-top: 1.3cm; margin-left: cm}
+#log1 {background-color: #0CC5AA; color: white; margin-top: 1.3cm}
+
+#direccion {margin-top: 0.2cm}
+
+#apellidos {margin-right: 3.2cm}
+
+#ciudad {margin-top: 0.2cm}
+#provincia {margin-top: 0.2cm; margin-right: 3.2cm}
+#CP {margin-top: 0.2cm}
+
+#tarj {margin-top: 0.2cm}
+#exp {margin-top: 0.2cm}
+#CVV {margin-top: 0.2cm; margin-left: cm;}
+
+
 
 body {
     display: flex;
     justify-content: center;
 }
-
+ #foto {
+     width: 600px; height: 280px;
+     margin-left: cm; 
+ }
 .wrapper {
     margin-top: 5%;
     width: 60%;
@@ -201,67 +219,67 @@ button:focus {
         min-height: 30px;
     }
 }
+#foto2 {width: 200px; height: 50px; margin-top:1cm; margin-left: 2.391cm;}
 </style>
 
 
 </head>
 <body>
+    <img src="/images/logo.PNG" id="foto">
     <div class="wrapper">
     <div class="container">
-        <form action="">
+        
+        <form action="POST">
+         
             <h1>
                 <i class="fas fa-shipping-fast"></i>
                 Detalles de envio
             </h1>
             <div class="name">
                 <div>
-                    <label for="f-name">Nombre</label>
-                    <input type="text" name="f-name">
+                    <input name="nombre" type="text" class="form-control" placeholder="Nombre">
                 </div>
                 <div>
-                    <label for="l-name">Apellidos</label>
-                    <input type="text" name="l-name">
+                   <input name="apellidos" type="text" class="form-control" placeholder="Apellidos" id="apellidos">
                 </div>
             </div>
             <div class="street">
-                <label for="name">Dirección</label>
-                <input type="text" name="address">
+                <input name="direccion" type="text" class="form-control" placeholder="Direccion" id="direccion">
             </div>
             <div class="address-info">
                 <div>
-                    <label for="city">Ciudad</label>
-                    <input type="text" name="city">
+                    <input name="ciudad" type="text" class="form-control" placeholder="Ciudad" id="ciudad">
                 </div>
                 <div>
-                    <label for="state">Provincia</label>
-                    <input type="text" name="state">
-                </div>
-                <div>
-                    <label for="zip">CP</label>
-                    <input type="text" name="zip">
+                    <input name="provincia" type="text" class="form-control" placeholder="Provincia" id="provincia">
                 </div>
             </div>
-            <h1>
+            
+            <h1 id="h1">
                 <i class="far fa-credit-card"></i> Información de pago
             </h1>
             <div class="cc-num">
-                <label for="card-num">Número Tarj.</label>
-                <input type="text" name="card-num">
+                <input name="Ntarj" type="text" class="form-control" placeholder="Número tarj." id="tarj">
             </div>
             <div class="cc-info">
                 <div>
-                    <label for="card-num">Expiración</label>
-                    <input type="text" name="expire">
+                    <input name="fecha exp" type="text" class="form-control" placeholder="Fecha exp." id="exp">
                 </div>
                 <div>
-                    <label for="card-num">CCV</label>
-                    <input type="text" name="security">
+                    <input name="email" type="password" class="form-control" placeholder="CVV" id="CVV">
                 </div>
             </div>
-            <div class="btns">
-                <button>Comprar</button>
-                <button>Volver a pedido</button>
-            </div>
+            <div class="form-group" id="login" >
+                        <a href="/users/{{usuarioid}}/pedidos/{{pedidoid}}" class="btn float-mid login_btn" id="log1"> Volver a pedido </a>   
+						<a href="/users/redir" class="btn float-mid login_btn" id="log">Pagar</a>
+                        <img src="/images/visa.png" id="foto2">
+                    </div>
+            
+
+
+       
+         
+
         </form>
     </div>
 </div>

@@ -14,6 +14,11 @@ router.get('/', async function(req, res, next) {
 });
 
 
+router.get("/redir", function (req, res) {
+
+  res.render("pagado")
+})
+
 
 router.get('/:id', async function (req, res) {
   let id = req.params.id;
@@ -79,6 +84,13 @@ router.post("/:usuarioid/nuevo-pedido/:pedidoid/checkout",  function (req, res) 
   let pedidoid = req.params.pedidoid;
   res.render ("checkout", {usuarioid, pedidoid});
 })
+
+router.get("/users/:usuarioid/nuevo-pedido/:pedidoid/checkout/fin", function (req, res) {
+  let usuarioid = req.session.usuario.id;
+  let pedidoid = req.params.pedidoid;
+  res.redirect("/users/" + usuarioid + "/nuevo-pedido/" + pedido + "/checkout")
+})
+
 
 
 
