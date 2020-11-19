@@ -6,8 +6,19 @@ var router = express.Router();
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render("login");
+  let usuario = req.session.usuario;
+  if (req.session.usuario = usuario) {
+  res.redirect("/users/" + usuario.id);
+  } else {
+  res.render("login"); }
 });
+
+router.get("/logout", function (req, res) {
+  req.session.usuario = undefined;
+  res.render("login")
+  })
+
+
 
 router.post('/',  async function (req, res) {
     let {email, password} = req.body;
@@ -25,6 +36,9 @@ router.post('/',  async function (req, res) {
         res.render("login", {error: "Email o contraseña incorrectos"});
     }
 })
+
+
+
 
 
 router.get('/registro', function (req, res) {

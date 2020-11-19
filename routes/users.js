@@ -14,10 +14,16 @@ router.get('/', async function(req, res, next) {
 });
 
 
+
+
 router.get("/redir", function (req, res) {
 
   res.render("pagado")
 })
+
+
+
+
 
 
 router.get('/:id', async function (req, res) {

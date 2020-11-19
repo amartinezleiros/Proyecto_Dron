@@ -15,6 +15,11 @@
         #foto {margin-right: 0.5cm;}
         #tr {margin-bottom: 5cm;}
         #jumb {background-color: white; margin-bottom: 2cm;}
+        #foto2 {width: 50px; height: 25px; margin-bottom: 0.2cm; background-color: white; color: white;}
+        #pedido {background-color: #0CC5AA; color: white; margin-top: 0.4cm;}
+        #hh {background-color: white; color: white; margin-left: 37cm; margin-top: -22cm}
+        .container {margin-top: -3.1cm}
+        .table {margin-top: -3cm;}
     </style>
 </head>
 <body>
@@ -25,6 +30,7 @@
                 <img src="/images/logo.PNG" id="foto">
                 <h1>Lista de pedidos</h1>
             </header>
+            <a  class="btn btn-sm" href="/logout"  id="hh" role="button"><img src="/images/logout.PNG" id="foto2"></a>
     
             <table class="table">
                 <thead class="thead-dark">
@@ -35,10 +41,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each pedidos}}
+                    {{#each usuario.Pedidos}}
                         <tr scope="row">
                             <td>{{id}}</td>
-                            <td>{{Fecha}}</td>
+                            <td>{{createdAt}}</td>
                             <td>{{Estado}}</td>
                         </tr>
                      {{/each}}
@@ -46,7 +52,7 @@
             </table>
     
             <form action="/users/{{usuario.id}}/nuevo-pedido" method="POST">
-                <input type="submit" value="Nuevo pedido" class="btn btn-primary">
+                <input type="submit" value="Nuevo pedido" class="btn float-mid login_btn" id="pedido">
             </form>
         </center>
 </div>
