@@ -11,7 +11,7 @@ class Usuario extends Model {
             email: {type: DataTypes.STRING, unique: true, allowNull: false}, 
             password: {type: DataTypes.STRING},
             ubicacion: {type: DataTypes.STRING, allowNull: true},
-            rol: {type: DataTypes.ENUM("cliente", "administrador", "gestor")}
+            rol: {type: DataTypes.ENUM("cliente", "administrador", "gestor"), defaultValue:"cliente"}
           }, {
             sequelize,
             modelName: 'Usuario'

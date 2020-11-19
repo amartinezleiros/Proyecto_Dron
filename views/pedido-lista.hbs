@@ -16,10 +16,22 @@
         #tr {margin-bottom: 5cm;}
         #jumb {background-color: white; margin-bottom: 2cm;}
         #foto2 {width: 50px; height: 25px; margin-bottom: 0.2cm; background-color: white; color: white;}
-        #pedido {background-color: #0CC5AA; color: white; margin-top: 0.4cm;}
+        #pedido {background-color: #0CC5AA; color: white; margin-top: 1cm;}
         #hh {background-color: white; color: white; margin-left: 37cm; margin-top: -22cm}
         .container {margin-top: -3.1cm}
         .table {margin-top: -3cm;}
+        .my-custom-scrollbar {
+        position: relative;
+        height: 445px;
+        overflow: auto;
+    
+        }
+        .table-wrapper-scroll-y {
+        display: block;
+        }
+        #pep {margin-top: 0.05cm}
+        #sub {margin-top: -3.5cm;}
+    
     </style>
 </head>
 <body>
@@ -31,17 +43,20 @@
                 <h1>Lista de pedidos</h1>
             </header>
             <a  class="btn btn-sm" href="/logout"  id="hh" role="button"><img src="/images/logout.PNG" id="foto2"></a>
-    
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr id="tr">
-                        <td scope="col">ID</td>
-                        <td scope="col">Fecha</td>
-                        <td scope="col">Estado</td>
-                    </tr>
+
+           <div class="table-wrapper-scroll-y my-custom-scrollbar" id="sub">
+
+            <table class="table table-bordered table-striped mb-0" id="pep">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                </tr>
                 </thead>
                 <tbody>
                     {{#each usuario.Pedidos}}
+
                         <tr scope="row">
                             <td>{{id}}</td>
                             <td>{{createdAt}}</td>
@@ -50,6 +65,8 @@
                      {{/each}}
                 </tbody>
             </table>
+            </div>
+
     
             <form action="/users/{{usuario.id}}/nuevo-pedido" method="POST">
                 <input type="submit" value="Nuevo pedido" class="btn float-mid login_btn" id="pedido">
