@@ -10,10 +10,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pedidosRouter = require('./routes/pedidos');
 
+const { necesitaAutenticacion, necesitaAdmin, necesitaGestor } = require('./auth');
 
 
 var app = express();
-
 
 
 
@@ -36,8 +36,10 @@ app.use(cookieSession({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', necesitaAutenticacion, usersRouter);
 app.use('/pedidos', pedidosRouter);
 
 // catch 404 and forward to error handler
@@ -57,6 +59,7 @@ app.use(function(err, req, res, next) {
 });
 
 require ('./conexion_db');
+
 
 module.exports = app;
 

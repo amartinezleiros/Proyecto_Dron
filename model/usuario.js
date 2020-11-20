@@ -17,6 +17,7 @@ class Usuario extends Model {
             modelName: 'Usuario'
           });
           
+          
         
           
     }

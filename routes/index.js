@@ -29,7 +29,7 @@ router.get('/pedido-form', function(req, res, next) {
     });
     if (usuario) {
         req.session.usuario = usuario;
-        res.redirect("/usuario");
+        res.redirect("/usuario/:id"); 
     } else {
         res.render("login", {error: "Email o contraseña incorrectos"});
     }
