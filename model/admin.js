@@ -1,8 +1,9 @@
+
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const Usuario = require('./Usuario')
 
 class Admin extends Usuario {
-  // definiciones de atributos y métodos
+
 
   static init(sequelize) {
     super.init({

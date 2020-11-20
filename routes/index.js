@@ -5,6 +5,8 @@ var router = express.Router();
 
 var router = express.Router();
 
+
+
 router.get('/', function(req, res, next) {
   let usuario = req.session.usuario;
   if (req.session.usuario = usuario) {
