@@ -5,7 +5,7 @@ class Pedido extends Model {
 
   static init(sequelize) {
     super.init({
-        Fecha: {type: DataTypes.DATE, allowNull: true},
+        Fecha: {type: DataTypes.DATE, allowNull: true, defaultValue:Sequelize.NOW},
         Estado: {type: DataTypes.ENUM ("Enviado", "No enviado"), defaultValue:"No enviado"}
       }, {
         sequelize,
