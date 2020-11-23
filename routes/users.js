@@ -3,6 +3,7 @@ var Usuario = require('../model/usuario');
 var Pedido = require('../model/pedido');
 const Farmaco = require('../model/farmaco');
 const Asignacion = require('../model/asignacion');
+const auth = require('../routes/auth');
 
 
 var router = express.Router();
@@ -30,7 +31,12 @@ router.get('/:id', async function (req, res) {
   let id = req.params.id;
   try { 
     let usuario = await Usuario.findByPk(id, {include:Pedido});
-    res.render("pedido-lista", {usuario});  
+    let Pedidos = await Pedido.findAll({where:{estado:"no enviado"}});
+    let Pedidos1 = await Pedido.findAll();
+    let cliente = usuario.rol == "cliente";
+    let admin = usuario.rol == "administrador";
+    let gestor = usuario.rol == "gestor";
+    res.render("pedido-lista", {usuario, cliente, admin, gestor, Pedidos, Pedidos1});  
   } catch(err) {
     res.render("error");
   }
