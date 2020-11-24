@@ -8,7 +8,12 @@ const auth = require('../routes/auth');
 
 var router = express.Router();
 
-/* GET users listing. */
+/**
+ * MUESTRA UNA LISTA DE TODOS LOS USUARIOS
+ * Al obtener un GET /users
+ * Coge todos los datos de los usuarios en base de datos
+ * Y hace un render del HTML userlist mostrando los datos
+ */
 router.get('/', async function(req, res, next) {
   let usuarios = await Usuario.findAll();
   res.render("userlist", {usuarios});
@@ -16,7 +21,11 @@ router.get('/', async function(req, res, next) {
 
 
 
-
+/**
+ * SIMULA QUE LA 'FALSA' TRANSACCION HA SIDO CORRECTA 
+ * Obtenemos un GET /redir 
+ * Hace el render del HTML pagado
+ */
 router.get("/redir", function (req, res) {
 
   res.render("pagado")
@@ -26,7 +35,15 @@ router.get("/redir", function (req, res) {
 
 
 
-
+/**
+ * PÁGINA PRINCIPAL DE CADA USUARIO
+ * Coge ID del usuario logeado con req.params.id y lo mete en una variable 'id'
+ * Variables usuario(cliente), Pedidos(gestor), Pedidos1(administrador) son las encargadas de coger los datos requeridos
+ * de la base de datos para ser utilizadas en el HTML según el ROL de cada uno
+ * Variables cliente, admin y gestor son para que el HTML compruebe sus condicionales con estas variables
+ * Hace el render de Pedido-lista el cual tiene condicionales y se abrirá una cosa u otra segun las variables anteriormente mencionadas
+ * En caso de fallo muestra un error.
+ */
 router.get('/:id', async function (req, res) {
   let id = req.params.id;
   try { 
@@ -42,6 +59,15 @@ router.get('/:id', async function (req, res) {
   }
 })
 
+
+
+/**
+ * GENERAR UN NUEVO PEDIDO Y LLEVARNOS A LA PAGINA PARA HACERLO
+ * Obtenemos un POST users/:id/nuevo-pedido
+ * Donde el ID será el propio del usuario y conseguido mediante req.params.id
+ * Con la variable pedido se genera un pedido nuevo en la base de datos
+ * Nos redirije a /users/iduser/pedidos/pedidoid
+ */
 router.post('/:id/nuevo-pedido', async function(req, res) {
   let id = req.params.id;
   let pedido = new Pedido({UsuarioId:id});
@@ -49,6 +75,19 @@ router.post('/:id/nuevo-pedido', async function(req, res) {
       res.redirect("/users/" + id + "/pedidos/" + pedido.id);
 });
 
+
+
+
+/**
+ * MOSTRAR PÁGINA PARA REALIZAR PEDIDO Y QUE VAYA MOSTRANDO LO QUE VAMOS PIDIENDO
+ * Tras obtener un get /users/:id/pedidos/:pedidoid
+ * Coge el :id con req.params.id
+ * Coge :pedidoid con req.params.pedidoid
+ * Dentro de la variable usuario mete los datos de session del usuario
+ * En la variable pedido metemos los datos que en la vista asignacion están relacionados con el id de ese pedido mediante findByPk
+ * Hace un render del HTML pedido-form mandandole los datos antes obtenidos del pedido, los farmacos y el usuario
+ * En caso de error, saldrá un mensaje de error
+ */
 router.get("/:id/pedidos/:pedidoid", async function(req, res) {
   let id = req.params.id;
   let pedidoid = req.params.pedidoid;
@@ -68,6 +107,14 @@ router.get("/:id/pedidos/:pedidoid", async function(req, res) {
   }
 })
 
+
+
+/**
+ * METER MEDICAMENTOS EN NUESTRO PEDIDO 
+ * Con la variable asignacion crea una nueva asignacion según los datos que le hayamos dado en el HYML y que obtiene con las variables PedidoId, FarmacoId, cantidad.
+ * Nos redirije a la anterior función
+ * En caso de error, nos lo muestra
+ */
 router.post("/:id/pedidos/:pedidoid", async function(req, res) {
   let id = req.params.id;
   let usuarioid = req.session.usuario.id;
@@ -78,36 +125,27 @@ router.post("/:id/pedidos/:pedidoid", async function(req, res) {
   console.log(asignacion);
       await asignacion.save();
   try { 
-    let pedido = await Pedido.findByPk(PedidoId, {
-      include: [
-        {model: Asignacion, include:[Farmaco]}
-      ]
-    });
-    console.log(pedido);
-    let farmaco = await Farmaco.findAll();
-    res.redirect("/users/" + usuarioid + "/pedidos/" + PedidoId) 
+    res.redirect("/users/" + usuarioid + "/pedidos/" + PedidoId)  
   } catch(err) {
     res.render("error", {message:err.message});
   }
 })
 
+
+
+
+
+
+/**
+ * PROCEDER AL PAGO DEL PEDIDO
+ * Tras darle al boton confirmar pedido
+ * Hace un render de checkout 
+ */
 router.post("/:usuarioid/nuevo-pedido/:pedidoid/checkout",  function (req, res) {
   let usuarioid = req.params.usuarioid;
   let pedidoid = req.params.pedidoid;
   res.render ("checkout", {usuarioid, pedidoid});
 })
-
-router.get("/users/:usuarioid/nuevo-pedido/:pedidoid/checkout/fin", function (req, res) {
-  let usuarioid = req.session.usuario.id;
-  let pedidoid = req.params.pedidoid;
-  res.redirect("/users/" + usuarioid + "/nuevo-pedido/" + pedido + "/checkout")
-})
-
-
-
-
-
-
 
 
 
