@@ -1,8 +1,15 @@
 //añadir campo cantidad
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
+
+
+
+/**
+ * CLASE asignacion
+ * HEREDA DE Model
+ * Atributo propio: cantidad(int).
+ */
 class Asignacion extends Model {
-  // definiciones de atributos y métodos
 
   static init(sequelize) {
     super.init({

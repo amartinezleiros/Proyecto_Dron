@@ -48,7 +48,7 @@ router.get('/:id', async function (req, res) {
   let id = req.params.id;
   try { 
     let usuario = await Usuario.findByPk(id, {include:Pedido});
-    let Pedidos = await Pedido.findAll({where:{estado:"no enviado"}});
+    let Pedidos = await Pedido.findAll({where:{estado:"No enviado"}});
     let Pedidos1 = await Pedido.findAll();
     let cliente = usuario.rol == "cliente";
     let admin = usuario.rol == "administrador";

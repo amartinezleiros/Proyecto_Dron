@@ -1,6 +1,16 @@
-
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const Usuario = require('./Usuario')
+
+
+
+
+/**
+ * CLASE Admin
+ * HEREDA DE USUARIO
+ * FUNCIONES PROPIAS:
+ * registro_gestor() para dar de alta gestores
+ * ver_pedidos() para ver todos los pedidos hechos
+ */
 
 class Admin extends Usuario {
 
@@ -16,8 +26,8 @@ class Admin extends Usuario {
       
 }
 
-alta_cliente(){}
-ver_pedido(){}
+registro_gestor(){}
+ver_pedidos(){}
 
 }
 

@@ -2,7 +2,7 @@ var express = require('express');
 var Usuario = require('../model/usuario');
 const { restart } = require('nodemon');
 var router = express.Router();
-var Pedido = require('../model/Pedido');
+var Pedido = require('../model/pedido');
 
 var router = express.Router();
 
@@ -47,10 +47,9 @@ router.get("/logout", function (req, res) {
  *           NO FUNCIONA
  */
   router.post('/envio/:id', async function (req, res) {
-    // Obtención de los datos del formulario
       let id = req.params.id;
       let pedido = await Pedido.findByPk(id);
-      pedido.estado = "enviado";
+      pedido.Estado = "Enviado";
       await pedido.save();
       let usuario = req.session.usuario;
       res.redirect("/users/" + usuario.id);

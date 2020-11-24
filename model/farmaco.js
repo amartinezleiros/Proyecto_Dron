@@ -1,5 +1,12 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
+
+
+/**
+ * CLASE Farmaco
+ * HEREDA DE Model
+ * Atributo propio: nombre(string), peso(float).
+ */
 class Farmaco extends Model {
   // definiciones de atributos y métodos
 

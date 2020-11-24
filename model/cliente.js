@@ -1,8 +1,14 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const Usuario = require('./Usuario')
 
+
+/**
+ * CLASE Cliente
+ * HEREDA DE Usuario
+ * Atributo propio: ubicacion(string)
+ * Funciones propias: ver_pedido_propio(), hacer_pedido().
+ */
 class Cliente extends Usuario {
-  // definiciones de atributos y métodos
 
   static init(sequelize) {
     super.init({
@@ -16,7 +22,6 @@ class Cliente extends Usuario {
 }
 
 ver_pedido_propio(){}
-modificar_perfil(){}
 hacer_pedido(){}
 
 }

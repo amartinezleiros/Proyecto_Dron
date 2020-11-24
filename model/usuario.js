@@ -1,5 +1,12 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
+
+
+/**
+ * CLASE Usuario
+ * HEREDA DE Model
+ * Atributo propio: nombre(string), apellidos(string), email(string), password(string), ubicacion(string), rol(enum).
+ */
 class Usuario extends Model {
   // definiciones de atributos y métodos
 
