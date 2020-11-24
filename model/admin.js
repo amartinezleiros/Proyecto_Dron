@@ -13,8 +13,11 @@ const Usuario = require('./Usuario')
  */
 
 class Admin extends Usuario {
-
-
+  // definiciones de atributos y métodos
+  /**
+   * Prueba de texto para ver si los comentarios funcionan
+   * @param {*} sequelize comunicación con la base de datosd
+   */
   static init(sequelize) {
     super.init({
 
