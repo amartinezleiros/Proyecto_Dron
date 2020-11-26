@@ -1,3 +1,7 @@
+/**
+ * @module routes/index
+ */
+
 var express = require('express');
 var Usuario = require('../model/usuario');
 const { restart } = require('nodemon');
@@ -150,6 +154,8 @@ router.post('/registrogestor', async function (req, res) {
 /**
  * Obtenemos un GET /passwordlost del INDEX
  * Hace un render del HTML passwordlost
+ * @name GET /passwordlost
+ * @function
  */
 router.get('/passwordlost', function (req, res, next) {
     res.render("passwordlost");

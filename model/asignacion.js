@@ -5,7 +5,7 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 
 
 /**
- * CLASE asignacion
+ * @class asignacion
  * HEREDA DE Model
  * Atributo propio: cantidad(int).
  */
