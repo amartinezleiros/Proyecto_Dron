@@ -1,8 +1,5 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const Usuario = require('./Usuario')
-
-
-
+const { Sequelize, DataTypes, Model } = require("sequelize");
+const Usuario = require("./Usuario");
 
 /**
  * CLASE Admin
@@ -19,19 +16,17 @@ class Admin extends Usuario {
    * @param {*} sequelize comunicación con la base de datosd
    */
   static init(sequelize) {
-    super.init({
-
-      }, {
+    super.init(
+      {},
+      {
         sequelize,
-        modelName: 'Admin',
-        
-      });
-      
-}
+        modelName: "Admin",
+      }
+    );
+  }
 
-registro_gestor(){}
-ver_pedidos(){}
-
+  registro_gestor() {}
+  ver_pedidos() {}
 }
 
 module.exports = Admin;

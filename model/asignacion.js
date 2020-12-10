@@ -1,8 +1,5 @@
 //añadir campo cantidad
-const { Sequelize, DataTypes, Model } = require('sequelize');
-
-
-
+const { Sequelize, DataTypes, Model } = require("sequelize");
 
 /**
  * @class asignacion
@@ -10,16 +7,17 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
  * Atributo propio: cantidad(int).
  */
 class Asignacion extends Model {
-
   static init(sequelize) {
-    super.init({
-        cantidad: {type: DataTypes.INTEGER}
-      }, {
+    super.init(
+      {
+        cantidad: { type: DataTypes.INTEGER },
+      },
+      {
         sequelize,
-        modelName: 'Asignacion'
-      });
-      
-    }
+        modelName: "Asignacion",
+      }
+    );
+  }
 }
 
 module.exports = Asignacion;

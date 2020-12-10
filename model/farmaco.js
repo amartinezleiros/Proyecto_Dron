@@ -1,6 +1,4 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-
-
+const { Sequelize, DataTypes, Model } = require("sequelize");
 
 /**
  * CLASE Farmaco
@@ -11,15 +9,17 @@ class Farmaco extends Model {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
-    super.init({
-        nombre: {type: DataTypes.STRING, allowNull: false},
-        peso: {type: DataTypes.FLOAT}
-      }, {
+    super.init(
+      {
+        nombre: { type: DataTypes.STRING, allowNull: false },
+        peso: { type: DataTypes.FLOAT },
+      },
+      {
         sequelize,
-        modelName: 'Farmaco'
-      });
-      
-    }
+        modelName: "Farmaco",
+      }
+    );
+  }
 }
 
 module.exports = Farmaco;

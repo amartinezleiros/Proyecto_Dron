@@ -1,7 +1,5 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const Usuario = require('./Usuario')
-
-
+const { Sequelize, DataTypes, Model } = require("sequelize");
+const Usuario = require("./Usuario");
 
 /**
  * CLASE Gestor
@@ -12,18 +10,16 @@ class Gestor extends Usuario {
   // definiciones de atributos y métodos
 
   static init(sequelize) {
-    super.init({
-
-      }, {
+    super.init(
+      {},
+      {
         sequelize,
-        modelName: 'Gestor',
-        
-      });
-      
-}
+        modelName: "Gestor",
+      }
+    );
+  }
 
-gestionar_pedido(){}
-
+  gestionar_pedido() {}
 }
 
 module.exports = Gestor;
